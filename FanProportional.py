@@ -2,7 +2,7 @@ import RPi.GPIO as gpio
 import time                    
 import subprocess              
 
-gpio_pin = 12
+gpio_pin = 18
 freq = 100
 minTemp = 35                   
 maxTemp = 80
