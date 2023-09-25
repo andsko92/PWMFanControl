@@ -2,17 +2,18 @@ import RPi.GPIO as gpio
 import time                    
 import subprocess              
 
-gpio_pin = 18
+gpioPin = 18
 freq = 100
 minTemp = 35                   
 maxTemp = 80
 minSpeed = 0
 maxSpeed = 100
+speedFactor = 1.5
 
 gpio.setwarnings(False)          
 gpio.setmode(gpio.BCM)            
-gpio.setup(gpio_pin,gpio.OUT)            
-fan = gpio.PWM(gpio_pin,freq)           
+gpio.setup(gpioPin,gpio.OUT)            
+fan = gpio.PWM(gpioPin,freq)           
 fan.start(0)
 
 def get_temp():                             
@@ -35,5 +36,8 @@ while True:
     elif temp > maxTemp:
         temp = maxTemp
     temp = int(renormalize(temp, [minTemp, maxTemp], [minSpeed, maxSpeed]))
-    fan.ChangeDutyCycle(temp)
+    if temp > (maxSpeed / speedFactor):
+        fan.ChangeDutyCycle(temp)
+    else:
+        fan.ChangeDutyCycle(temp*speedFactor)
     time.sleep(5)       
