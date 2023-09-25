@@ -3,8 +3,8 @@ import time
 import subprocess              
 
 gpioPin = 18
-freq = 100
-minTemp = 35                   
+freq = 25
+minTemp = 45                   
 maxTemp = 80
 minSpeed = 0
 maxSpeed = 100
