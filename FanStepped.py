@@ -34,7 +34,7 @@ while True:
     elif temp > 60:
         fan.ChangeDutyCycle(60)
     elif temp > 55:
-        fan.ChangeDutyCycle(55)
+        fan.ChangeDutyCycle(50)
     elif temp > 50:
         fan.ChangeDutyCycle(40)
     elif temp > 45:
